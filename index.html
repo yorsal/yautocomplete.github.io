@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jAutoComplete</title>
+	<link href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css" rel="stylesheet" />
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<script src="jquery.YautoComplete.js"></script>
+</head>
+<body>
+<style>
+	.box { width: 640px; margin: 80px auto; }
+	.demo { }
+	.demo a { background:#eee; border-bottom:1px solid #ccc; padding: 10px; display: block; cursor: pointer; }
+	.demo a.selected  { background:#ddd; color:#000;  }
+</style>
+
+<h2>TEXT with Array</h2>
+<div class="box">
+	<input type="text" class="form-control YautoComplete" />
+</div>
+
+<h2>TEXT with AJAX</h2>
+<div class="box">
+	<input type="text" class="form-control YautoComplete2" />
+</div>
+	<script type="text/javascript">
+	$('.YautoComplete').YautoComplete({
+		containerClass: 'demo',
+		source: [{value: 111}, {value:2222}]
+	});
+
+	$('.YautoComplete2').YautoComplete({
+		containerClass: 'demo',
+		source: function(){
+			return {
+				query: $('.YautoComplete2').val()
+			};
+		},
+		sourceUrl: 'data.php'
+	});
+	</script>
+</body>
+</html>
